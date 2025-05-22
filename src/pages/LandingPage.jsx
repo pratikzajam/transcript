@@ -88,7 +88,10 @@ export default function LandingPage() {
           </p>
           <button
             className="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold text-lg shadow-md hover:bg-indigo-500 transition-all"
-            onClick={handleGetStartedClick}
+            onClick={() => {
+               
+                navigate("/login");
+              }}
           >
             Get Started
           </button>

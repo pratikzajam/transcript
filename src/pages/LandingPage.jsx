@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 export default function LandingPage() {
   const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleGetStartedClick = () => {
     const featuresSection = document.getElementById("features");
@@ -16,23 +17,60 @@ export default function LandingPage() {
     <div className="min-h-screen bg-white text-gray-800">
       <header className="bg-white shadow sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="text-3xl font-bold text-indigo-600 tracking-wide">Transcript.ai</h1>
-          <nav className="flex items-center space-x-6">
+          <h1 className="text-2xl md:text-3xl font-bold text-indigo-600 tracking-wide">Transcript.ai</h1>
+
+          {/* Desktop Menu */}
+          <nav className="hidden md:flex items-center space-x-6">
             <ul className="flex space-x-6 text-base font-medium">
               <li><a href="#features" className="hover:text-indigo-600 transition">Features</a></li>
               <li><a href="#how-it-works" className="hover:text-indigo-600 transition">How It Works</a></li>
               <li><a href="#contact" className="hover:text-indigo-600 transition">Contact</a></li>
             </ul>
-            <div className="ml-6 space-x-3">
-              <button
-                className="px-4 py-2 text-indigo-600 font-semibold border border-indigo-600 rounded-full hover:bg-indigo-100 transition"
-                onClick={() => navigate("/login")}
-              >
-                Login
-              </button>
-            </div>
+            <button
+              className="ml-6 px-4 py-2 text-indigo-600 font-semibold border border-indigo-600 rounded-full hover:bg-indigo-100 transition"
+              onClick={() => navigate("/login")}
+            >
+              Login
+            </button>
           </nav>
+
+          {/* Hamburger Icon */}
+          <div className="md:hidden">
+            <button
+              className="text-indigo-600 focus:outline-none"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2"
+                viewBox="0 0 24 24">
+                {isMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden px-6 pb-4">
+            <ul className="space-y-3 text-base font-medium">
+              <li><a href="#features" className="block hover:text-indigo-600 transition" onClick={() => setIsMenuOpen(false)}>Features</a></li>
+              <li><a href="#how-it-works" className="block hover:text-indigo-600 transition" onClick={() => setIsMenuOpen(false)}>How It Works</a></li>
+              <li><a href="#contact" className="block hover:text-indigo-600 transition" onClick={() => setIsMenuOpen(false)}>Contact</a></li>
+            </ul>
+            <button
+              className="mt-4 w-full text-indigo-600 font-semibold border border-indigo-600 px-4 py-2 rounded-full hover:bg-indigo-100 transition"
+              onClick={() => {
+                setIsMenuOpen(false);
+                navigate("/login");
+              }}
+            >
+              Login
+            </button>
+          </div>
+        )}
       </header>
 
       <motion.section

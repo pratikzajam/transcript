@@ -1,5 +1,5 @@
 import { useAuth } from './context/AuthContext.jsx'; // ✅ already imported
-import {Routes,Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import LandingPage from './pages/LandingPage.jsx'
@@ -28,11 +28,11 @@ export default function App() {
   };
 
   return (
-    <GoogleOAuthProvider clientId="492539507110-pum3vesshas1ocktem5grr5195iur2ga.apps.googleusercontent.com">
-     
-       {/* <BrowserRouter> */}
-     
-         <Routes>
+    <GoogleOAuthProvider clientId="492539507110-l3sr87akj88h2esddj54v4nhq6l8dvpr.apps.googleusercontent.com">
+
+      {/* <BrowserRouter> */}
+
+      <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route
           path="/login"
@@ -57,9 +57,9 @@ export default function App() {
         />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-   
-        {/* </BrowserRouter> */}
-    
+
+      {/* </BrowserRouter> */}
+
     </GoogleOAuthProvider>
   );
 }

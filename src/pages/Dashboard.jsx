@@ -36,10 +36,10 @@ const { isAuthenticated, login, logout } = useAuth(); // ✅ use from context
     formData.append("file", files[0]);
     formData.append("email", email);
 
-    setIsUploading(true);
+    setIsUploading(true); 
 
     try {
-      const response = await axios.post("https://pratikzajam.tech/transcribe_video", formData, {
+      const response = await axios.post("https://quiz.pratikzajam.sbs/transcribe_video", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

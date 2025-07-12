@@ -110,6 +110,6 @@ curl -X POST http://localhost:8000/transcribe_video \
 
 ## 📧 Contact
 
-Built with ❤️ by [Your Name](https://github.com/your-username)
+Built with ❤️ by Pratik Zajam(https://github.com/your-username)
 
 ---
